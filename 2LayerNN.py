@@ -3,6 +3,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import tqdm
+import math
+import csv
+import sys
 
 def rose(a=1, n=3, disp=2):
     '''Funcion para definir las rosas,
@@ -16,19 +19,21 @@ def rose(a=1, n=3, disp=2):
     b = np.arange(0, rads.shape[0], rads.shape[0]/n)
 
     for i,rad in enumerate(tqdm.tqdm(rads)):
-        r = a * np.cos(n * rad) + np.random.randn(1)/disp
+        r = a * np.cos(n * rad) + np.random.randn(1) / disp
+        x = np.squeeze(r*np.cos(rad))
+        y = np.squeeze(r*np.sin(rad))
         b_prueba = b <= i
         if np.where(b_prueba == True)[0][-1] % 2 == 0:
-            plt.polar(rad, r, np.random.choice(color1, 1)[0]+'.')
+            plt.plot(r*np.cos(rad), r*np.sin(rad), np.random.choice(color1, 1)[0] + '.')
         else:
-            plt.polar(rad, r, np.random.choice(color2, 1)[0]+'.')
+            plt.plot(r*np.cos(rad), r*np.sin(rad), np.random.choice(color2, 1)[0] + '.')
 
     # display the polar plot
     plt.show()
 
-
 def main_nn():
-    rose(n=10, a=1, disp=2)
+    n, a, disp = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3])
+    rose(n=n, a=a, disp=disp)
 
 
 if __name__ == '__main__':

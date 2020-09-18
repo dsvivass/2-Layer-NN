@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# /script.py n_petalos r disp plot
-./2LayerNN.py 2 1 10 True
+# /script.py n_petalos r disp paso_rads plot
+./GenDatos.py 2 1 10 0.01 False

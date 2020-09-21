@@ -36,11 +36,11 @@ def rose(a=1, n=3, disp=2, paso_rads = 0.01, plot=True):
     # display the polar plot
     if plot == True: plt.show()
 
-def main_nn():
+def main():
     n, a, disp, paso_rads, plot = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), float(sys.argv[4]), sys.argv[5]
     plot = plot == 'True' # True si se cumple la condicion, asi pasa de str a bool
     rose(n=n, a=a, disp=disp, paso_rads=paso_rads, plot=plot)
 
 
 if __name__ == '__main__':
-    main_nn()
+    main()
